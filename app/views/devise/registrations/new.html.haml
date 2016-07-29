@@ -1,0 +1,32 @@
+.login-page
+  .login-form
+    %h2.form-main-title
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .field.input-wrap
+        
+        = f.text_field :first_name, :placeholder => "Enter first name"
+      .field.input-wrap
+        
+        = f.text_field :last_name, :placeholder => "Enter last name"
+      .field.input-wrap
+        
+        = f.text_field :user_name, :placeholder => "Enter user name"
+      .field.input-wrap
+        
+        = f.email_field :email, :placeholder => "Enter email id"
+
+      .field.input-wrap
+        
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        
+        = f.password_field :password, :placeholder => "Enter password"
+      .field.input-wrap
+        
+        = f.password_field :password_confirmation, :placeholder => "Enter confirm password"
+      .actions
+        = f.submit "Sign up",:class=>"btn-theme"
+    = render "devise/shared/links"

@@ -1,0 +1,23 @@
+%table
+  %tr
+    %th
+      First Name
+    %th
+      Last Name
+    %th
+      User Name
+    %th
+      Email Id
+  %tr
+    %td.font16
+      = @user.first_name
+    %td.font16
+      = @user.last_name
+    %td.font16
+      = @user.user_name
+    %td.font16
+      = @user.email
+    %td.font16
+      = link_to "Edit", edit_user_path(current_user.id)
+      = link_to "Create Post", new_post_path
+      = link_to "All Posts", posts_path

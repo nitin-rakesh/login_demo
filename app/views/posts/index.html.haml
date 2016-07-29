@@ -1,0 +1,23 @@
+= link_to "Create Post", new_post_path
+%table
+  %tr
+    %th
+      User Name
+    %th
+      Image
+    %th
+      Post Description
+    
+    - @posts.each do |post|
+      %tr
+        %td.font16
+          = User.full_name(post.user_id)rescue nil
+        %td.font16
+          - image = Picture.find_by(:picturable_id => post.id, :picturable_type => "Post") rescue nil
+          = image_tag(image.image.url(:thumb)) rescue nil
+        %td.font16
+          = post.post_description rescue nil
+        %td.font16
+          - if current_user.id == post.user_id
+            = link_to "Edit", edit_post_path(post.id)
+            = link_to "delete", post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,12 @@
+= form_for @post, :html => { :multipart => true } do |f|
+  .field
+    = f.label :image, "Profile Picture"
+    %br/
+    =# file_field_tag :image, autofocus: true
+    = file_field_tag 'image', :accept => 'image/jpeg', :multiple => true
+  .field
+    = f.label :post_description, "Post Description"
+    %br/
+    = f.text_area :post_description
+    = hidden_field_tag :picturable_type, "Post"
+  = f.submit "Post"

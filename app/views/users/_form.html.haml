@@ -1,0 +1,24 @@
+= form_for (@user), :html => { :multipart => true } do |f|
+  .field
+    = f.label :image, "Profile Picture"
+    %br/
+    =# file_field_tag :image, autofocus: true
+    = file_field_tag 'image', :accept => 'image/jpeg', :multiple => true
+  .field
+    = f.label :first_name, "First Name"
+    %br/
+    = f.text_field :first_name
+  .field
+    = f.label :last_name, "Last Name"
+    %br/
+    = f.text_field :last_name, autofocus: true
+  .field
+    = f.label :user_name, "User Name"
+    %br/
+    = f.text_field :user_name, autofocus: true
+  .field
+    = f.label :email, "Email Id"
+    %br/
+    = f.email_field :email, autofocus: true
+    = hidden_field_tag :picturable_type, "User"
+  = f.submit "save"
